@@ -53,6 +53,10 @@ docker build -t dotnet-ecs-app:latest .
 docker run -p 8080:8080 dotnet-ecs-app:latest
 ```
 
+```sh
+curl -v http://localhost:8123/weatherforecast 2>&1 | head -30
+```
+
 ## Deploy to AWS
 
 ### 1. Initialize and Apply Terraform
