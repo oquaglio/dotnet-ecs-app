@@ -110,6 +110,7 @@ terraform output app_url
 |----------|-------------|
 | `GET /health` | Health check - returns status and timestamp |
 | `GET /weatherforecast` | Sample weather data |
+| `GET /swagger` | Only works in Development mode (not in the container by default) |
 
 ## Configuration
 
