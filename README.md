@@ -82,12 +82,11 @@ This creates:
 ECR_URL=$(terraform output -raw ecr_repository_url)
 
 # Login to ECR
-aws ecr get-login-password --region ap-southeast-2 | \
-  docker login --username AWS --password-stdin $ECR_URL
+aws ecr get-login-password --region ap-southeast-2 | docker login --username AWS --password-stdin $ECR_URL
 
 # Build and push
-docker build -t $ECR_URL:latest .
-docker push $ECR_URL:latest
+docker build -t ${ECR_URL}:latest .
+docker push ${ECR_URL}:latest
 ```
 
 ### 3. Deploy to ECS
@@ -133,6 +132,8 @@ Terraform variables can be customized in `terraform/variables.tf`:
 Application logs are sent to CloudWatch Logs at `/ecs/dotnet-ecs-app`.
 
 ## Cleanup
+
+Remove the ECR image (or let it be force deleted by the below)
 
 ```bash
 cd terraform
